@@ -1,0 +1,32 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: aqua;
+}
+canvas {
+  background-image: url(Images/telaDeFundo.jpg);
+  background-size: cover;
+}
+
+.main-screen {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: green;
+  text-align: center;
+  font-size: 100px;
+}
+
+.instructions {
+  text-align: center;
+}
+
