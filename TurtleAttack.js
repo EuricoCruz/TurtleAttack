@@ -31,6 +31,7 @@ let ocean = {
     this.points = 0; 
     pincel.clearRect(0, 0, 800, 600);
     backgroundSound.pause();
+    pincel.fillStyle = 'white';
   },
   clear: function() {
     pincel.clearRect(0, 0, this.width, this.height);
@@ -54,12 +55,14 @@ let ocean = {
   pincel.fillStyle = 'black';
   pincel.fillRect(0, 0, 800, 600);
   pincel.fill();
+  pincel.font = '30px arial';
   pincel.fillStyle = 'red';
-  pincel.fillText('Game Over!', 150, 100);
+  pincel.fillText('Game Over!', 200, 300);
   pincel.fillStyle = 'white';
-  pincel.fillText(`The ocean still polluted, but you avoid it to be worst; 
-  your score ${score}`, 100, 150);
-  }
+  pincel.font = '20px arial'
+  pincel.fillText(`The ocean still polluted, but you avoid it to be worst!`, 200, 350);
+  pincel.fillText(`Your score ${score} points`, 200, 380); 
+}
 }
 
 class Player {
@@ -82,8 +85,8 @@ class Bottle {
     this.x = Math.floor(Math.random() * 580);
     this.y = 0; 
     this.img = document.getElementById('plasticBottle')
-    this.width = 100;
-    this.height = 80;
+    this.width = 60;
+    this.height = 60;
     this.speedY = 1;
   }
   draw() {
@@ -103,7 +106,7 @@ class Straw {
     this.img = document.getElementById('straw')
     this.width = 60;
     this.height = 40;
-    this.speedY = 1;
+    this.speedY = 2;
   }
   draw() {
     pincel.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -136,8 +139,8 @@ class Tire {
     this.x = Math.floor(Math.random() * 580);
     this.y = 0; 
     this.img = document.getElementById('tire')
-    this.width = 80;
-    this.height = 80;
+    this.width = 40;
+    this.height = 40;
     this.speedY = 5;
   }
   draw() {
@@ -389,7 +392,7 @@ function crashLettuce() {
 function checkGameOver() {
   if(life === 0) {
     backgroundSound.pause();
-    ocean.stop()
-    return ocean.clearEnd(); 
+    ocean.clearEnd();
+    return ocean.stop(); 
   }
 }  
