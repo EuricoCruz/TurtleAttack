@@ -7,6 +7,7 @@ let tireSet = [];
 let score = 0;
 let trashBagSet = []
 let lettuceSet = [];
+let gameOverImage = document.getElementById("gameover");
 let backgroundSound = new Audio("Soundtracks/editedSound.mp3");
 backgroundSound.loop = true;
 window.onload = function() {
@@ -52,16 +53,15 @@ let ocean = {
   stop: function () {
   clearInterval(this.interval);
   pincel.clearRect(0, 0, 800, 600);
-  pincel.fillStyle = 'black';
   pincel.fillRect(0, 0, 800, 600);
   pincel.fill();
-  pincel.font = '30px arial';
+  pincel.drawImage(gameOverImage, 0, 0, 800, 600);
+  pincel.font = '60px arial';
   pincel.fillStyle = 'red';
-  pincel.fillText('Game Over!', 200, 300);
-  pincel.fillStyle = 'white';
-  pincel.font = '20px arial'
-  pincel.fillText(`The ocean still polluted, but you avoid it to be worst!`, 200, 350);
-  pincel.fillText(`Your score ${score} points`, 200, 380); 
+  pincel.fillText('Game Over!', 250, 100);
+  pincel.fillStyle = 'black';
+  pincel.font = '40px arial'
+  pincel.fillText(`Your score ${score} points`, 100, 550); 
 }
 }
 
@@ -72,7 +72,7 @@ class Player {
     this.img = document.getElementById('turtle')
     this.width = 80;
     this.height = 100;
-    this.speedX = 10;
+    this.speedX = 20;
   }
   drawTurtle() {
     pincel.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -187,10 +187,10 @@ document.onkeydown = function(e) {
     }  
     break;
     case 37: // left arrow
-    if(turtle.x >= 15 && score > 200) {
+    if(turtle.x >= 15 && score > 500) {
       turtle.img = document.getElementById('blastoise2')
       turtle.x -= 20;
-    } else if(turtle.x >= 15 && score > 100) {
+    } else if(turtle.x >= 15 && score > 300) {
       turtle.img = document.getElementById('wartotle')
       turtle.x -= 20;
     }  else if(turtle.x >= 15) {
@@ -199,10 +199,10 @@ document.onkeydown = function(e) {
     }  
     break;
     case 39: // right arrow
-    if(turtle.x <= 700 && score > 200) {
+    if(turtle.x <= 700 && score > 500) {
       turtle.img = document.getElementById('blastoise')
       turtle.x += 20;  
-    } else if(turtle.x <= 700 && score > 100) {
+    } else if(turtle.x <= 700 && score > 300) {
         turtle.img = document.getElementById('wartotle2')
         turtle.x += 20;
       } else if(turtle.x <= 700) {
@@ -290,7 +290,7 @@ function updateTrashBag() {
 }
 
 function updateTire() {
-    if(ocean.frames % 1000 === 0 && tireSet.length < 2 && score > 2000) {
+    if(ocean.frames % 1000 === 0 && tireSet.length < 2 && score > 1000) {
       const tire = new Tire;
       tireSet.push(tire) 
   }
@@ -307,7 +307,7 @@ function updateTire() {
 }
 
 function updateLettuce() {
-  if(ocean.frames % 1200 === 0 && lettuceSet.length < 2) {
+  if(ocean.frames % 800 === 0 && lettuceSet.length < 2) {
     const lettuce = new Lettuce;
     lettuceSet.push(lettuce) 
     }
@@ -393,6 +393,6 @@ function checkGameOver() {
   if(life === 0) {
     backgroundSound.pause();
     ocean.clearEnd();
-    return ocean.stop(); 
+    return ocean.stop();  
   }
 }  
