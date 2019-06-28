@@ -1,6 +1,6 @@
 # TurtleAttack
 
-The gam turtle Attack is based on an ideia tha starts witth a turttle, in this case we use the pokemon Squirtle to illustrate it, 
+The game turtle Attack is based on an ideia tha starts witth a turttle, in this case we use the pokemon Squirtle to illustrate it, 
 to collect the trash and the uselles plastic and avoid it to stay in the bottom of the sea. 
 The gamescreen was created on Canvas, with a width of 800 and 600 height.
 The player and the obstacles are created with Objects. 
